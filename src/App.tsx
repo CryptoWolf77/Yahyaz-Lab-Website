@@ -233,7 +233,10 @@ function App() {
               <FlaskConical size={16} />
               Individual Game Studio
             </p>
-            <h1>Yahyaz Lab</h1>
+            <h1 className="sr-only">Yahyaz Lab</h1>
+            <div className="hero-logo-wrap" aria-hidden="true">
+              <img className="hero-logo" src={studio.logoTransparent} alt="" />
+            </div>
             <p className="hero__tagline">{studio.tagline}</p>
             <div className="hero__actions">
               <a className="button button--primary" href="#games">

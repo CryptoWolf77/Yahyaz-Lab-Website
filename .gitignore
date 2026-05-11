@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.local
+desktop-smoke.png
+mobile-smoke.png

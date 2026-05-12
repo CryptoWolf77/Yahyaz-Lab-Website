@@ -6,6 +6,7 @@ import {
   ExternalLink,
   FlaskConical,
   Gamepad2,
+  Languages,
   Mail,
   Play,
   Sparkles,
@@ -14,6 +15,183 @@ import {
 import { Game, games, studio } from "./data/siteContent";
 
 const HeroScene = lazy(() => import("./components/HeroScene"));
+
+type Language = "en" | "ar";
+
+const translations = {
+  en: {
+    dir: "ltr",
+    brandHome: "Yahyaz Lab home",
+    nav: {
+      showreel: "Showreel",
+      games: "Games",
+      studio: "Studio",
+      contact: "Contact",
+    },
+    language: {
+      label: "Language",
+      en: "EN",
+      ar: "عربي",
+    },
+    hero: {
+      eyebrow: "Individual Game Studio",
+      since: "Since",
+      tagline: studio.tagline,
+      viewGames: "View Games",
+      watchShowreel: "Watch Showreel",
+      signals: ["Action", "Puzzles", "Mobile Worlds"],
+    },
+    showreel: {
+      eyebrow: "Studio Reel",
+      title: "Gameplay first, logo loud, motion everywhere.",
+      identity: "Yahyaz Lab identity reel",
+      whiteNinja: "White Ninja promo",
+      puzzleZombie: "Puzzle VS Zombie promo",
+    },
+    games: {
+      eyebrow: "Released Worlds",
+      title: "Two different games, one playful lab identity.",
+      explore: "Explore Game",
+      storeSoon: "Store Links Soon",
+      trailer: "trailer",
+      details: "details",
+      screenshots: "screenshots",
+      showScreenshot: "Show",
+      close: "Close details",
+      previous: "Previous screenshot",
+      next: "Next screenshot",
+    },
+    studio: {
+      eyebrow: "Built by Yahya",
+      title: "A small studio identity with big game energy.",
+      since: "Since 2021",
+      intro: studio.intro,
+      metrics: [
+        { value: "2", label: "showcased games" },
+        { value: "3D", label: "portfolio feel" },
+        { value: "Solo", label: "studio voice" },
+      ],
+    },
+    contact: {
+      eyebrow: "Contact",
+      title: "Let’s build, publish, or collaborate.",
+      body: "Reach Yahyaz Lab directly for publishing, collaboration, and game project conversations.",
+    },
+    footer: {
+      backToTop: "Back to top",
+    },
+  },
+  ar: {
+    dir: "rtl",
+    brandHome: "العودة إلى بداية موقع Yahyaz Lab",
+    nav: {
+      showreel: "العرض",
+      games: "الألعاب",
+      studio: "الاستوديو",
+      contact: "تواصل",
+    },
+    language: {
+      label: "اللغة",
+      en: "EN",
+      ar: "عربي",
+    },
+    hero: {
+      eyebrow: "استوديو ألعاب مستقل",
+      since: "منذ",
+      tagline: "استوديو مستقل يصنع ألعاب أكشن وألغاز وعوالم مرحة.",
+      viewGames: "استعرض الألعاب",
+      watchShowreel: "شاهد العرض",
+      signals: ["أكشن", "ألغاز", "عوالم موبايل"],
+    },
+    showreel: {
+      eyebrow: "عرض الاستوديو",
+      title: "أسلوب لعب واضح، شعار حاضر، وحركة في كل زاوية.",
+      identity: "عرض هوية Yahyaz Lab",
+      whiteNinja: "عرض White Ninja",
+      puzzleZombie: "عرض Puzzle VS Zombie",
+    },
+    games: {
+      eyebrow: "عوالم منشورة",
+      title: "لعبتان مختلفتان وهوية استوديو واحدة مليئة بالطاقة.",
+      explore: "استكشف اللعبة",
+      storeSoon: "روابط المتاجر قريبًا",
+      trailer: "العرض التشويقي",
+      details: "التفاصيل",
+      screenshots: "لقطات الشاشة",
+      showScreenshot: "عرض",
+      close: "إغلاق التفاصيل",
+      previous: "الصورة السابقة",
+      next: "الصورة التالية",
+    },
+    studio: {
+      eyebrow: "من تطوير يحيى",
+      title: "هوية استوديو صغيرة بطاقة ألعاب كبيرة.",
+      since: "منذ 2021",
+      intro:
+        "Yahyaz Lab هو استوديو فردي يركز على ألعاب الموبايل السريعة، العوالم ذات الشخصيات المميزة، ولحظات اللعب التي تشعر اللاعب بالمتعة مباشرة.",
+      metrics: [
+        { value: "2", label: "ألعاب معروضة" },
+        { value: "3D", label: "إحساس ثلاثي الأبعاد" },
+        { value: "Solo", label: "صوت استوديو فردي" },
+      ],
+    },
+    contact: {
+      eyebrow: "تواصل",
+      title: "لنبنِ أو ننشر أو نتعاون.",
+      body: "تواصل مباشرة مع Yahyaz Lab للنشر أو التعاون أو الحديث عن مشاريع الألعاب.",
+    },
+    footer: {
+      backToTop: "العودة للأعلى",
+    },
+  },
+} as const;
+
+const gameTranslations: Record<Language, Record<string, Partial<Game>>> = {
+  en: {},
+  ar: {
+    "white-ninja": {
+      kicker: "منصة أكشن",
+      description:
+        "مغامرة جانبية سريعة تجمع قتال النينجا، العملات، المخاطر، الزعماء، وتحديات تعتمد على سرعة الاستجابة.",
+      longDescription:
+        "يتنقل White Ninja بين الغابات والكهوف ومناطق الحمم والغرف المستقبلية، مع مزيج من القفز والقتال وجمع العناصر وتفادي الأخطار.",
+      tags: ["موبايل", "أكشن", "منصات", "زعماء"],
+      features: [
+        "قتال سريع وهجمات مقذوفة",
+        "عملات وفخاخ وأشواك وحمم ومخاطر متحركة",
+        "بيئات متعددة بطابع مختلف",
+        "شخصيات كرتونية وتحكم واضح",
+      ],
+    },
+    "puzzle-vs-zombie": {
+      kicker: "ألغاز فيزيائية",
+      description:
+        "لعبة ألغاز تعتمد على ترتيب الكتل، تفجير القنابل، جمع النجوم، والتخلص من الزومبي مرحلة بعد مرحلة.",
+      longDescription:
+        "تمزج Puzzle VS Zombie بين الأجواء الكرتونية المرعبة وتحديات الألغاز الفيزيائية. في كل مرحلة يقرأ اللاعب البناء، يختار الأداة المناسبة، وينهي تهديد الزومبي.",
+      tags: ["موبايل", "ألغاز", "فيزياء", "زومبي"],
+      features: [
+        "ألغاز كتل وفخاخ مستوحاة من الفيزياء",
+        "قنابل ومناشير ونجوم وصناديق وعناصر قابلة للتدمير",
+        "عوالم كرتونية مرعبة وشخصيات متنوعة",
+        "تحديات منظمة مرحلة بعد مرحلة",
+      ],
+    },
+  },
+};
+
+const localizeGame = (game: Game, language: Language): Game => ({
+  ...game,
+  ...gameTranslations[language][game.id],
+});
+
+const getInitialLanguage = (): Language => {
+  if (typeof window === "undefined") return "en";
+  const requested = new URLSearchParams(window.location.search).get("lang");
+  if (requested === "ar" || requested === "en") return requested;
+  const saved = window.localStorage.getItem("yahyaz-language");
+  return saved === "ar" || saved === "en" ? saved : "en";
+};
 
 function useActiveVideo(enabled = true) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -81,7 +259,17 @@ function VideoPanel({
   );
 }
 
-function GameModal({ game, onClose }: { game: Game; onClose: () => void }) {
+function GameModal({
+  game,
+  language,
+  ui,
+  onClose,
+}: {
+  game: Game;
+  language: Language;
+  ui: (typeof translations)[Language]["games"];
+  onClose: () => void;
+}) {
   const [index, setIndex] = useState(0);
   const activeImage = game.screenshots[index];
 
@@ -98,31 +286,31 @@ function GameModal({ game, onClose }: { game: Game; onClose: () => void }) {
   }, [game.screenshots.length, onClose]);
 
   return (
-    <div className="modal-shell" role="dialog" aria-modal="true" aria-label={`${game.title} details`}>
-      <button className="modal-backdrop" type="button" aria-label="Close details" onClick={onClose} />
+    <div className="modal-shell" role="dialog" aria-modal="true" aria-label={`${game.title} ${ui.details}`}>
+      <button className="modal-backdrop" type="button" aria-label={ui.close} onClick={onClose} />
       <article className="modal">
-        <button className="icon-button modal__close" type="button" onClick={onClose} aria-label="Close details">
+        <button className="icon-button modal__close" type="button" onClick={onClose} aria-label={ui.close}>
           <X size={20} />
         </button>
         <div className="modal__media">
-          <img src={activeImage} alt={`${game.title} screenshot ${index + 1}`} />
-          <div className="modal__controls" aria-label="Gallery controls">
+          <img src={activeImage} alt={`${game.title} ${ui.screenshots} ${index + 1}`} />
+          <div className="modal__controls" aria-label={`${game.title} ${ui.screenshots}`}>
             <button
               className="icon-button"
               type="button"
               onClick={() => setIndex((current) => (current - 1 + game.screenshots.length) % game.screenshots.length)}
-              aria-label="Previous screenshot"
+              aria-label={ui.previous}
             >
-              <ChevronLeft size={20} />
+              {language === "ar" ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
             </button>
             <span>{index + 1} / {game.screenshots.length}</span>
             <button
               className="icon-button"
               type="button"
               onClick={() => setIndex((current) => (current + 1) % game.screenshots.length)}
-              aria-label="Next screenshot"
+              aria-label={ui.next}
             >
-              <ChevronRight size={20} />
+              {language === "ar" ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
         </div>
@@ -153,7 +341,17 @@ function GameModal({ game, onClose }: { game: Game; onClose: () => void }) {
   );
 }
 
-function GameShowcase({ game, reverse = false, onOpen }: { game: Game; reverse?: boolean; onOpen: () => void }) {
+function GameShowcase({
+  game,
+  reverse = false,
+  ui,
+  onOpen,
+}: {
+  game: Game;
+  reverse?: boolean;
+  ui: (typeof translations)[Language]["games"];
+  onOpen: () => void;
+}) {
   const [activeShot, setActiveShot] = useState(0);
   const gallery = useMemo(() => game.screenshots.slice(0, 5), [game.screenshots]);
 
@@ -161,20 +359,28 @@ function GameShowcase({ game, reverse = false, onOpen }: { game: Game; reverse?:
     <article className={reverse ? "game-showcase game-showcase--reverse" : "game-showcase"}>
       <div className="game-showcase__media">
         <div className="game-stage">
-          <img className="game-stage__main" src={gallery[activeShot]} alt={`${game.title} gameplay`} loading="lazy" />
-          {game.icon ? <img className="game-stage__icon" src={game.icon} alt="" loading="lazy" /> : null}
+          <img
+            className="game-stage__main"
+            src={gallery[activeShot]}
+            alt={`${game.title} gameplay`}
+            loading="lazy"
+            decoding="async"
+          />
+          {game.icon ? (
+            <img className="game-stage__icon" src={game.icon} alt="" loading="lazy" decoding="async" />
+          ) : null}
           <div className="game-stage__shine" />
         </div>
-        <div className="thumb-row" aria-label={`${game.title} screenshots`}>
+        <div className="thumb-row" aria-label={`${game.title} ${ui.screenshots}`}>
           {gallery.map((image, index) => (
             <button
               key={image}
               className={index === activeShot ? "thumb thumb--active" : "thumb"}
               type="button"
               onClick={() => setActiveShot(index)}
-              aria-label={`Show ${game.title} screenshot ${index + 1}`}
+              aria-label={`${ui.showScreenshot} ${game.title} ${ui.screenshots} ${index + 1}`}
             >
-              <img src={image} alt="" loading="lazy" />
+              <img src={image} alt="" loading="lazy" decoding="async" />
             </button>
           ))}
         </div>
@@ -189,15 +395,15 @@ function GameShowcase({ game, reverse = false, onOpen }: { game: Game; reverse?:
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <VideoPanel title={`${game.title} trailer`} src={game.trailer} poster={game.poster} />
+        <VideoPanel title={`${game.title} ${ui.trailer}`} src={game.trailer} poster={game.poster} />
         <div className="action-row">
           <button className="button button--primary" type="button" onClick={onOpen}>
             <Gamepad2 size={18} />
-            Explore Game
+            {ui.explore}
           </button>
           <button className="button button--ghost" type="button" disabled>
             <ExternalLink size={18} />
-            Store Links Soon
+            {ui.storeSoon}
           </button>
         </div>
       </div>
@@ -207,20 +413,49 @@ function GameShowcase({ game, reverse = false, onOpen }: { game: Game; reverse?:
 
 function App() {
   const [activeGame, setActiveGame] = useState<Game | null>(null);
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const copy = translations[language];
+  const localizedGames = useMemo(() => games.map((game) => localizeGame(game, language)), [language]);
+  const isArabic = language === "ar";
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = "ltr";
+    window.localStorage.setItem("yahyaz-language", language);
+  }, [language]);
 
   return (
-    <>
+    <div className={isArabic ? "app-shell app-shell--rtl" : "app-shell"}>
       <header className="site-header">
-        <a href="#top" className="brand-mark" aria-label="Yahyaz Lab home">
-          <img src={studio.logoTransparent} alt="" />
+        <a href="#top" className="brand-mark" aria-label={copy.brandHome}>
+          <img src={studio.logoTransparent} alt="" loading="eager" decoding="async" />
           <span>Yahyaz Lab</span>
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#showreel">Showreel</a>
-          <a href="#games">Games</a>
-          <a href="#studio">Studio</a>
-          <a href="#contact">Contact</a>
+          <a href="#showreel">{copy.nav.showreel}</a>
+          <a href="#games">{copy.nav.games}</a>
+          <a href="#studio">{copy.nav.studio}</a>
+          <a href="#contact">{copy.nav.contact}</a>
         </nav>
+        <div className="language-switcher" role="group" aria-label={copy.language.label}>
+          <Languages size={16} aria-hidden="true" />
+          <button
+            className={language === "en" ? "language-switcher__option language-switcher__option--active" : "language-switcher__option"}
+            type="button"
+            onClick={() => setLanguage("en")}
+            aria-pressed={language === "en"}
+          >
+            {copy.language.en}
+          </button>
+          <button
+            className={language === "ar" ? "language-switcher__option language-switcher__option--active" : "language-switcher__option"}
+            type="button"
+            onClick={() => setLanguage("ar")}
+            aria-pressed={language === "ar"}
+          >
+            {copy.language.ar}
+          </button>
+        </div>
       </header>
 
       <main id="top">
@@ -231,28 +466,39 @@ function App() {
           <div className="hero__content">
             <p className="eyebrow">
               <FlaskConical size={16} />
-              Individual Game Studio
+              {copy.hero.eyebrow}
             </p>
             <h1 className="sr-only">Yahyaz Lab</h1>
             <div className="hero-logo-wrap" aria-hidden="true">
-              <img className="hero-logo" src={studio.logoTransparent} alt="" />
+              <img
+                className="hero-logo"
+                src={studio.logoTransparent}
+                alt=""
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
             </div>
-            <p className="hero__tagline">{studio.tagline}</p>
+            <div className="since-badge" aria-label={`${copy.hero.since} 2021`}>
+              <span>{copy.hero.since}</span>
+              <strong>2021</strong>
+            </div>
+            <p className="hero__tagline">{copy.hero.tagline}</p>
             <div className="hero__actions">
               <a className="button button--primary" href="#games">
                 <Gamepad2 size={18} />
-                View Games
+                {copy.hero.viewGames}
               </a>
               <a className="button button--secondary" href="#showreel">
                 <Play size={18} />
-                Watch Showreel
+                {copy.hero.watchShowreel}
               </a>
             </div>
           </div>
           <div className="hero__signal" aria-hidden="true">
-            <span>Action</span>
-            <span>Puzzles</span>
-            <span>Mobile Worlds</span>
+            {copy.hero.signals.map((signal) => (
+              <span key={signal}>{signal}</span>
+            ))}
           </div>
         </section>
 
@@ -260,14 +506,14 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">
               <Sparkles size={16} />
-              Studio Reel
+              {copy.showreel.eyebrow}
             </p>
-            <h2>Gameplay first, logo loud, motion everywhere.</h2>
+            <h2>{copy.showreel.title}</h2>
           </div>
           <div className="showreel-grid">
-            <VideoPanel title="Yahyaz Lab identity reel" src={studio.showreel} poster={studio.logoSquare} featured />
-            <VideoPanel title="White Ninja promo" src={games[0].trailer} poster={games[0].poster} />
-            <VideoPanel title="Puzzle VS Zombie promo" src={games[1].trailer} poster={games[1].poster} />
+            <VideoPanel title={copy.showreel.identity} src={studio.showreel} poster={studio.logoSquare} featured />
+            <VideoPanel title={copy.showreel.whiteNinja} src={localizedGames[0].trailer} poster={localizedGames[0].poster} />
+            <VideoPanel title={copy.showreel.puzzleZombie} src={localizedGames[1].trailer} poster={localizedGames[1].poster} />
           </div>
         </section>
 
@@ -275,15 +521,16 @@ function App() {
           <div className="section-heading section-heading--center">
             <p className="eyebrow">
               <Gamepad2 size={16} />
-              Released Worlds
+              {copy.games.eyebrow}
             </p>
-            <h2>Two different games, one playful lab identity.</h2>
+            <h2>{copy.games.title}</h2>
           </div>
-          {games.map((game, index) => (
+          {localizedGames.map((game, index) => (
             <GameShowcase
               key={game.id}
               game={game}
               reverse={index % 2 === 1}
+              ui={copy.games}
               onOpen={() => setActiveGame(game)}
             />
           ))}
@@ -291,19 +538,20 @@ function App() {
 
         <section id="studio" className="studio section-band">
           <div className="studio__visual">
-            <img src={studio.logoTransparent} alt="Yahyaz Lab logo" loading="lazy" />
+            <img src={studio.logoTransparent} alt="Yahyaz Lab logo" loading="lazy" decoding="async" />
           </div>
           <div className="studio__content">
             <p className="eyebrow">
               <FlaskConical size={16} />
-              Built by Yahya
+              {copy.studio.eyebrow}
             </p>
-            <h2>A small studio identity with big game energy.</h2>
-            <p>{studio.intro}</p>
+            <h2>{copy.studio.title}</h2>
+            <div className="studio__since">{copy.studio.since}</div>
+            <p>{copy.studio.intro}</p>
             <div className="studio-metrics">
-              <span><strong>2</strong> showcased games</span>
-              <span><strong>3D</strong> portfolio feel</span>
-              <span><strong>Solo</strong> studio voice</span>
+              {copy.studio.metrics.map((metric) => (
+                <span key={metric.label}><strong>{metric.value}</strong> {metric.label}</span>
+              ))}
             </div>
           </div>
         </section>
@@ -311,26 +559,28 @@ function App() {
         <section id="contact" className="contact section-band">
           <p className="eyebrow">
             <Mail size={16} />
-            Contact
+            {copy.contact.eyebrow}
           </p>
-          <h2>Let’s build, publish, or collaborate.</h2>
-          <p>Store, email, and social links can be connected when you are ready to publish the portfolio.</p>
-          <a className="button button--primary" href="mailto:hello@yahyazlab.example">
+          <h2>{copy.contact.title}</h2>
+          <p>{copy.contact.body}</p>
+          <a className="button button--primary" href="mailto:admin@yahyazlab.com">
             <Mail size={18} />
-            Contact Yahyaz Lab
+            admin@yahyazlab.com
             <ArrowRight size={18} />
           </a>
         </section>
       </main>
 
       <footer className="site-footer">
-        <img src={studio.logoTransparent} alt="" />
+        <img src={studio.logoTransparent} alt="" loading="lazy" decoding="async" />
         <span>Yahyaz Lab</span>
-        <a href="#top">Back to top</a>
+        <a href="#top">{copy.footer.backToTop}</a>
       </footer>
 
-      {activeGame ? <GameModal game={activeGame} onClose={() => setActiveGame(null)} /> : null}
-    </>
+      {activeGame ? (
+        <GameModal game={activeGame} language={language} ui={copy.games} onClose={() => setActiveGame(null)} />
+      ) : null}
+    </div>
   );
 }
 

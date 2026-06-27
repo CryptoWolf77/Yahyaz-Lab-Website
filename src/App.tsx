@@ -21,11 +21,11 @@ type Language = "en" | "ar";
 const translations = {
   en: {
     dir: "ltr",
-    brandHome: "Yahyaz Lab home",
+    brandHome: "YahyazLab home",
     nav: {
       showreel: "Showreel",
       games: "Games",
-      studio: "Studio",
+      studio: "About",
       contact: "Contact",
     },
     language: {
@@ -34,7 +34,7 @@ const translations = {
       ar: "عربي",
     },
     hero: {
-      eyebrow: "Individual Game Studio",
+      eyebrow: "Freelance Game Developer",
       since: "Since",
       tagline: studio.tagline,
       viewGames: "View Games",
@@ -42,15 +42,15 @@ const translations = {
       signals: ["Action", "Puzzles", "Mobile Worlds"],
     },
     showreel: {
-      eyebrow: "Studio Reel",
-      title: "Gameplay first, logo loud, motion everywhere.",
-      identity: "Yahyaz Lab identity reel",
+      eyebrow: "Developer Reel",
+      title: "Gameplay first, personal brand loud, motion everywhere.",
+      identity: "YahyazLab identity reel",
       whiteNinja: "White Ninja promo",
       puzzleZombie: "Puzzle VS Zombie promo",
     },
     games: {
-      eyebrow: "Released Worlds",
-      title: "Two different games, one playful lab identity.",
+      eyebrow: "Featured Projects",
+      title: "Two different games, one personal creative identity.",
       explore: "Explore Game",
       storeSoon: "Store Links Soon",
       trailer: "trailer",
@@ -63,19 +63,19 @@ const translations = {
     },
     studio: {
       eyebrow: "Built by Yahya",
-      title: "A small studio identity with big game energy.",
+      title: "A personal game developer profile with bold game energy.",
       since: "Since 2021",
       intro: studio.intro,
       metrics: [
         { value: "2", label: "showcased games" },
         { value: "3D", label: "portfolio feel" },
-        { value: "Solo", label: "studio voice" },
+        { value: "Solo", label: "developer voice" },
       ],
     },
     contact: {
       eyebrow: "Contact",
-      title: "Let’s build, publish, or collaborate.",
-      body: "Reach Yahyaz Lab directly for publishing, collaboration, and game project conversations.",
+      title: "Work with me on games, publishing, or collaboration.",
+      body: "Reach YahyazLab directly for freelance game development, publishing, collaboration, and project conversations.",
     },
     footer: {
       backToTop: "Back to top",
@@ -83,11 +83,11 @@ const translations = {
   },
   ar: {
     dir: "rtl",
-    brandHome: "العودة إلى بداية موقع Yahyaz Lab",
+    brandHome: "العودة إلى بداية موقع YahyazLab",
     nav: {
       showreel: "العرض",
       games: "الألعاب",
-      studio: "الاستوديو",
+      studio: "عني",
       contact: "تواصل",
     },
     language: {
@@ -96,23 +96,23 @@ const translations = {
       ar: "عربي",
     },
     hero: {
-      eyebrow: "استوديو ألعاب مستقل",
+      eyebrow: "مطور ألعاب مستقل",
       since: "منذ",
-      tagline: "استوديو مستقل يصنع ألعاب أكشن وألغاز وعوالم مرحة.",
+      tagline: "أصنع ألعاب أكشن وألغاز وعوالم مرحة من خلال YahyazLab كعلامتي الشخصية.",
       viewGames: "استعرض الألعاب",
       watchShowreel: "شاهد العرض",
       signals: ["أكشن", "ألغاز", "عوالم موبايل"],
     },
     showreel: {
-      eyebrow: "عرض الاستوديو",
+      eyebrow: "عرض المطور",
       title: "أسلوب لعب واضح، شعار حاضر، وحركة في كل زاوية.",
-      identity: "عرض هوية Yahyaz Lab",
+      identity: "عرض هوية YahyazLab",
       whiteNinja: "عرض White Ninja",
       puzzleZombie: "عرض Puzzle VS Zombie",
     },
     games: {
-      eyebrow: "عوالم منشورة",
-      title: "لعبتان مختلفتان وهوية استوديو واحدة مليئة بالطاقة.",
+      eyebrow: "مشاريعي",
+      title: "لعبتان مختلفتان وهوية شخصية واحدة مليئة بالطاقة.",
       explore: "استكشف اللعبة",
       storeSoon: "روابط المتاجر قريبًا",
       trailer: "العرض التشويقي",
@@ -125,20 +125,20 @@ const translations = {
     },
     studio: {
       eyebrow: "من تطوير يحيى",
-      title: "هوية استوديو صغيرة بطاقة ألعاب كبيرة.",
+      title: "ملفي كمطور ألعاب مستقل بطاقة مشاريع كبيرة.",
       since: "منذ 2021",
       intro:
-        "Yahyaz Lab هو استوديو فردي يركز على ألعاب الموبايل السريعة، العوالم ذات الشخصيات المميزة، ولحظات اللعب التي تشعر اللاعب بالمتعة مباشرة.",
+        "YahyazLab هو ملفي وعلامتي الشخصية كمطور ألعاب مستقل، أركز فيه على ألعاب الموبايل السريعة، العوالم ذات الشخصيات المميزة، ولحظات اللعب الممتعة مباشرة.",
       metrics: [
         { value: "2", label: "ألعاب معروضة" },
         { value: "3D", label: "إحساس ثلاثي الأبعاد" },
-        { value: "Solo", label: "صوت استوديو فردي" },
+        { value: "Solo", label: "أسلوب مطور مستقل" },
       ],
     },
     contact: {
       eyebrow: "تواصل",
-      title: "لنبنِ أو ننشر أو نتعاون.",
-      body: "تواصل مباشرة مع Yahyaz Lab للنشر أو التعاون أو الحديث عن مشاريع الألعاب.",
+      title: "تواصل معي للعمل أو النشر أو التعاون.",
+      body: "تواصل مباشرة مع YahyazLab لتطوير الألعاب بشكل مستقل، أو للنشر، أو للتعاون، أو للحديث عن مشاريع الألعاب.",
     },
     footer: {
       backToTop: "العودة للأعلى",
@@ -429,7 +429,7 @@ function App() {
       <header className="site-header">
         <a href="#top" className="brand-mark" aria-label={copy.brandHome}>
           <img src={studio.logoTransparent} alt="" loading="eager" decoding="async" />
-          <span>Yahyaz Lab</span>
+          <span>YahyazLab</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="#showreel">{copy.nav.showreel}</a>
@@ -468,7 +468,7 @@ function App() {
               <FlaskConical size={16} />
               {copy.hero.eyebrow}
             </p>
-            <h1 className="sr-only">Yahyaz Lab</h1>
+            <h1 className="sr-only">YahyazLab</h1>
             <div className="hero-logo-wrap" aria-hidden="true">
               <img
                 className="hero-logo"
@@ -538,7 +538,7 @@ function App() {
 
         <section id="studio" className="studio section-band">
           <div className="studio__visual">
-            <img src={studio.logoTransparent} alt="Yahyaz Lab logo" loading="lazy" decoding="async" />
+            <img src={studio.logoTransparent} alt="YahyazLab logo" loading="lazy" decoding="async" />
           </div>
           <div className="studio__content">
             <p className="eyebrow">
@@ -573,7 +573,7 @@ function App() {
 
       <footer className="site-footer">
         <img src={studio.logoTransparent} alt="" loading="lazy" decoding="async" />
-        <span>Yahyaz Lab</span>
+        <span>YahyazLab</span>
         <a href="#top">{copy.footer.backToTop}</a>
       </footer>
 

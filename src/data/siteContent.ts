@@ -21,10 +21,10 @@ export type Game = {
 const asset = (path: string) => `/assets/${path}`;
 
 export const studio = {
-  name: "Yahyaz Lab",
-  tagline: "Independent game studio crafting action, puzzles, and playful worlds.",
+  name: "YahyazLab",
+  tagline: "Freelance game developer crafting action, puzzles, and playful worlds.",
   intro:
-    "Yahyaz Lab is a solo game studio focused on energetic mobile games, character-driven worlds, and fast moments that feel good in the player’s hands.",
+    "YahyazLab is my personal game development portfolio, focused on energetic mobile games, character-driven worlds, and fast moments that feel good in the player’s hands.",
   logoTransparent: asset("brand/logo-transparent.webp"),
   logoSquare: asset("brand/logo-square.webp"),
   showreel: asset("videos/yahyaz-blackbg.mp4"),
@@ -38,7 +38,7 @@ export const games: Game[] = [
     description:
       "A fast side-scrolling adventure with ninja combat, coins, hazards, bosses, and quick reflex challenges.",
     longDescription:
-      "White Ninja moves through forests, caves, lava chambers, and sci-fi rooms with a mix of jumping, attacking, collecting, and dodging. The website presents it as the studio’s kinetic action title.",
+      "White Ninja moves through forests, caves, lava chambers, and sci-fi rooms with a mix of jumping, attacking, collecting, and dodging. The website presents it as my kinetic action title.",
     theme: "ninja",
     icon: asset("white-ninja/icon.webp"),
     featured: asset("white-ninja/screen-2.webp"),

@@ -22,9 +22,9 @@ const asset = (path: string) => `/assets/${path}`;
 
 export const studio = {
   name: "YahyazLab",
-  tagline: "Freelance game developer crafting action, puzzles, and playful worlds.",
+  tagline: "I create polished game experiences with sharp gameplay, cinematic presentation, and a distinct visual identity.",
   intro:
-    "YahyazLab is my personal game development portfolio, focused on energetic mobile games, character-driven worlds, and fast moments that feel good in the player’s hands.",
+    "YahyazLab is my personal space for presenting game projects, visual experiments, and interactive worlds shaped around clear mechanics, memorable characters, and a cinematic arcade feel.",
   logoTransparent: asset("brand/logo-transparent.webp"),
   logoSquare: asset("brand/logo-square.webp"),
   showreel: asset("videos/yahyaz-blackbg.mp4"),
@@ -36,9 +36,9 @@ export const games: Game[] = [
     title: "White Ninja",
     kicker: "Action platformer",
     description:
-      "A fast side-scrolling adventure with ninja combat, coins, hazards, bosses, and quick reflex challenges.",
+      "A fast side-scrolling action game built around ninja combat, sharp jumps, collectible coins, hazards, and boss encounters.",
     longDescription:
-      "White Ninja moves through forests, caves, lava chambers, and sci-fi rooms with a mix of jumping, attacking, collecting, and dodging. The website presents it as my kinetic action title.",
+      "White Ninja moves through forests, caves, lava chambers, and sci-fi rooms with a focused rhythm of jumping, attacking, collecting, and dodging. It is one of my action-focused projects, designed around quick reactions and readable arcade combat.",
     theme: "ninja",
     icon: asset("white-ninja/icon.webp"),
     featured: asset("white-ninja/screen-2.webp"),
@@ -55,10 +55,10 @@ export const games: Game[] = [
     ],
     tags: ["Mobile", "Action", "Platformer", "Boss fights"],
     features: [
-      "Fast combat and projectile attacks",
+      "Fast combat with clear attack timing",
       "Coins, traps, spikes, lava, and moving hazards",
-      "Multiple themed environments",
-      "Cartoon character style with readable controls",
+      "Multiple environments with distinct moods",
+      "Cartoon character style with readable mobile controls",
     ],
     stores: [
       { label: "Google Play" },
@@ -70,9 +70,9 @@ export const games: Game[] = [
     title: "Puzzle VS Zombie",
     kicker: "Physics puzzle",
     description:
-      "A puzzle game about solving block layouts, blasting bombs, collecting stars, and defeating zombies level by level.",
+      "A spooky puzzle game about reading each level, triggering the right tools, collecting stars, and clearing zombie threats.",
     longDescription:
-      "Puzzle VS Zombie mixes spooky cartoon visuals with physics-style challenges. Each stage asks the player to read the structure, trigger the right tools, and clear the zombie threat.",
+      "Puzzle VS Zombie combines spooky cartoon visuals with physics-inspired level setups. Each stage asks the player to understand the structure, time the tools, collect stars, and solve the zombie challenge with the right move.",
     theme: "zombie",
     featured: asset("puzzle-vs-zombie/featured.webp"),
     trailer: asset("videos/puzzle-vs-zombie-promo.mp4"),
@@ -90,8 +90,8 @@ export const games: Game[] = [
     features: [
       "Physics-inspired block and trap puzzles",
       "Bombs, saws, stars, crates, and destructible setups",
-      "Spooky cartoon worlds and character variants",
-      "Level-by-level challenge structure",
+      "Spooky cartoon worlds with bold character designs",
+      "Level-by-level challenges built for careful timing",
     ],
     stores: [
       { label: "Google Play" },

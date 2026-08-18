@@ -53,6 +53,7 @@ const translations = {
       title: "Game projects shaped with action, puzzles, characters, and cinematic arcade energy.",
       explore: "Explore Game",
       storeSoon: "Store Links Soon",
+      openStore: (gameTitle: string, storeName: string) => `Open ${gameTitle} on ${storeName}`,
       trailer: "trailer",
       details: "details",
       screenshots: "screenshots",
@@ -115,6 +116,7 @@ const translations = {
       title: "مشاريع ألعاب تجمع بين الأكشن، والألغاز، والشخصيات، وطاقة الأركيد السينمائية.",
       explore: "استكشف اللعبة",
       storeSoon: "روابط المتاجر قريبًا",
+      openStore: (gameTitle: string, storeName: string) => `فتح ${gameTitle} على ${storeName}`,
       trailer: "العرض التشويقي",
       details: "التفاصيل",
       screenshots: "لقطات الشاشة",
@@ -329,11 +331,24 @@ function GameModal({
             ))}
           </ul>
           <div className="store-row">
-            {game.stores.map((store) => (
-              <button className="store-button" key={store.label} disabled={!store.href} type="button">
-                {store.label}
-              </button>
-            ))}
+            {game.stores.map((store) =>
+              store.href ? (
+                <a
+                  className="store-button"
+                  href={store.href}
+                  key={store.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={ui.openStore(game.title, store.label)}
+                >
+                  {store.label}
+                </a>
+              ) : (
+                <button className="store-button" key={store.label} disabled type="button">
+                  {store.label}
+                </button>
+              ),
+            )}
           </div>
         </div>
       </article>
@@ -354,6 +369,7 @@ function GameShowcase({
 }) {
   const [activeShot, setActiveShot] = useState(0);
   const gallery = useMemo(() => game.screenshots.slice(0, 5), [game.screenshots]);
+  const appStore = game.stores.find((store) => store.label === "App Store");
 
   return (
     <article className={reverse ? "game-showcase game-showcase--reverse" : "game-showcase"}>
@@ -401,10 +417,23 @@ function GameShowcase({
             <Gamepad2 size={18} />
             {ui.explore}
           </button>
-          <button className="button button--ghost" type="button" disabled>
-            <ExternalLink size={18} />
-            {ui.storeSoon}
-          </button>
+          {appStore?.href ? (
+            <a
+              className="button button--ghost"
+              href={appStore.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={ui.openStore(game.title, appStore.label)}
+            >
+              <ExternalLink size={18} />
+              {appStore.label}
+            </a>
+          ) : (
+            <button className="button button--ghost" type="button" disabled>
+              <ExternalLink size={18} />
+              {ui.storeSoon}
+            </button>
+          )}
         </div>
       </div>
     </article>
@@ -503,7 +532,7 @@ function App() {
         </section>
 
         <section id="showreel" className="showreel section-band">
-          <div className="section-heading">
+          <div className="section-heading section-heading--center">
             <p className="eyebrow">
               <Sparkles size={16} />
               {copy.showreel.eyebrow}

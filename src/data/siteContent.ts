@@ -62,7 +62,10 @@ export const games: Game[] = [
     ],
     stores: [
       { label: "Google Play" },
-      { label: "App Store" },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/gb/app/white-ninja-arcade-adventure/id1559261331",
+      },
     ],
   },
   {
@@ -95,7 +98,10 @@ export const games: Game[] = [
     ],
     stores: [
       { label: "Google Play" },
-      { label: "App Store" },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/gb/app/puzzle-vs-zombie-puzzle-game/id1582694306",
+      },
     ],
   },
 ];

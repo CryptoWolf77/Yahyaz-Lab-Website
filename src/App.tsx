@@ -79,6 +79,7 @@ const translations = {
       body: "For questions about YahyazLab projects, portfolio work, or future updates, you can contact me here.",
     },
     footer: {
+      privacy: "White Ninja Privacy",
       backToTop: "Back to top",
     },
   },
@@ -143,6 +144,7 @@ const translations = {
       body: "للاطلاع أو الاستفسار عن مشاريع YahyazLab، أو أعمالي المعروضة هنا، أو التحديثات القادمة، يمكنك التواصل معي من هنا.",
     },
     footer: {
+      privacy: "خصوصية White Ninja",
       backToTop: "العودة للأعلى",
     },
   },
@@ -603,6 +605,7 @@ function App() {
       <footer className="site-footer">
         <img src={studio.logoTransparent} alt="" loading="lazy" decoding="async" />
         <span>YahyazLab</span>
+        <a href="/privacy/white-ninja">{copy.footer.privacy}</a>
         <a href="#top">{copy.footer.backToTop}</a>
       </footer>
 

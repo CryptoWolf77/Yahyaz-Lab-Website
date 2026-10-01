@@ -1009,6 +1009,18 @@ html[lang="ar"] .hero__tagline {
   object-fit: cover;
 }
 
+.privacy-hero__icon-frame--landscape {
+  width: min(100%, 230px);
+  aspect-ratio: 16 / 9;
+}
+
+.privacy-hero__icon-frame--landscape img {
+  width: calc(100% - 34px);
+  height: calc(100% - 34px);
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .privacy-hero__art-label {
   color: var(--cyan);
   font-size: 0.75rem;

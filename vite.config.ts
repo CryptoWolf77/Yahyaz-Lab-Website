@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
+        puzzleVsZombiePrivacy: "privacy/puzzle-vs-zombie/index.html",
         whiteNinjaPrivacy: "privacy/white-ninja/index.html",
       },
     },

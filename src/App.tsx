@@ -373,7 +373,7 @@ function GameShowcase({
 }) {
   const [activeShot, setActiveShot] = useState(0);
   const gallery = useMemo(() => game.screenshots.slice(0, 5), [game.screenshots]);
-  const appStore = game.stores.find((store) => store.label === "App Store");
+  const availableStores = game.stores.filter((store) => store.href);
 
   return (
     <article className={reverse ? "game-showcase game-showcase--reverse" : "game-showcase"}>
@@ -421,17 +421,20 @@ function GameShowcase({
             <Gamepad2 size={18} />
             {ui.explore}
           </button>
-          {appStore?.href ? (
-            <a
-              className="button button--ghost"
-              href={appStore.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={ui.openStore(game.title, appStore.label)}
-            >
-              <ExternalLink size={18} />
-              {appStore.label}
-            </a>
+          {availableStores.length > 0 ? (
+            availableStores.map((store) => (
+              <a
+                className="button button--ghost"
+                href={store.href}
+                key={store.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={ui.openStore(game.title, store.label)}
+              >
+                <ExternalLink size={18} />
+                {store.label}
+              </a>
+            ))
           ) : (
             <button className="button button--ghost" type="button" disabled>
               <ExternalLink size={18} />

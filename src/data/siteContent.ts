@@ -61,7 +61,10 @@ export const games: Game[] = [
       "Cartoon character style with readable mobile controls",
     ],
     stores: [
-      { label: "Google Play" },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.b.ninja.jump.run.battle.adventure",
+      },
       {
         label: "App Store",
         href: "https://apps.apple.com/gb/app/white-ninja-arcade-adventure/id1559261331",
@@ -97,7 +100,10 @@ export const games: Game[] = [
       "Level-by-level challenges built for careful timing",
     ],
     stores: [
-      { label: "Google Play" },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.puzzlevszombie.horror.kill.games",
+      },
       {
         label: "App Store",
         href: "https://apps.apple.com/gb/app/puzzle-vs-zombie-puzzle-game/id1582694306",

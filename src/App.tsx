@@ -447,9 +447,9 @@ function GameShowcase({
   );
 }
 
-function App() {
+function App({ initialLanguage }: { initialLanguage?: Language }) {
   const [activeGame, setActiveGame] = useState<Game | null>(null);
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getInitialLanguage());
   const copy = translations[language];
   const localizedGames = useMemo(() => games.map((game) => localizeGame(game, language)), [language]);
   const isArabic = language === "ar";
@@ -610,8 +610,8 @@ function App() {
       <footer className="site-footer">
         <img src={studio.logoTransparent} alt="" loading="lazy" decoding="async" />
         <span>YahyazLab</span>
-        <a href="/privacy/white-ninja">{copy.footer.whiteNinjaPrivacy}</a>
-        <a href="/privacy/puzzle-vs-zombie">{copy.footer.puzzlePrivacy}</a>
+        <a href="/privacy/white-ninja" data-privacy-link>{copy.footer.whiteNinjaPrivacy}</a>
+        <a href="/privacy/puzzle-vs-zombie" data-privacy-link>{copy.footer.puzzlePrivacy}</a>
         <a href="#top">{copy.footer.backToTop}</a>
       </footer>
 

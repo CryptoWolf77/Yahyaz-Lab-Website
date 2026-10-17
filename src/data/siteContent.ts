@@ -22,9 +22,9 @@ const asset = (path: string) => `/assets/${path}`;
 
 export const studio = {
   name: "YahyazLab",
-  tagline: "I create polished game experiences with sharp gameplay, cinematic presentation, and a distinct visual identity.",
+  tagline: "I build useful applications and engaging games with care, curiosity, and a distinct visual identity.",
   intro:
-    "YahyazLab is my personal space for presenting game projects, visual experiments, and interactive worlds shaped around clear mechanics, memorable characters, and a cinematic arcade feel.",
+    "YahyazLab is my personal space for building useful applications and engaging games. I design and develop each project with care, from tools that simplify your day to interactive worlds made to explore.",
   logoTransparent: asset("brand/logo-transparent.webp"),
   logoSquare: asset("brand/logo-square.webp"),
   showreel: asset("videos/yahyaz-blackbg.mp4"),

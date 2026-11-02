@@ -43,6 +43,10 @@ The existing production typography comes from `src/styles.css`: Inter/system san
 
 Run these commands from the project root:
 
+Use Node.js 22.12.0 or newer. The build prints its actual Node.js version before running TypeScript and Vite. Vite must remain on a patched release, at least 7.3.7 within the existing Vite 7 line.
+
+Coolify keeps the existing Nixpacks static-site workflow and build-time `NIXPACKS_NODE_VERSION=22`. `nixpacks.toml` pins the official nixpkgs snapshot providing Node.js 22.23.4 because a major-version setting alone can select an outdated package. When changing this archive, verify the actual Node.js version, clean installation, production build, health check and all five routes before considering deployment complete. Keep the `dist/` publish directory and existing Nginx routing unchanged.
+
 - `npm.cmd run dev`: start the Vite development server at `http://127.0.0.1:5173/`.
 - `npm.cmd run build`: run TypeScript checks and generate the five-entry production build in `dist/`.
 - `npm.cmd run preview`: serve the existing production build at `http://127.0.0.1:4173/`. Rebuild first to include source changes.

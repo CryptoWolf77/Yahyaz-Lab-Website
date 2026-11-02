@@ -87,6 +87,9 @@ export const applications: Application[] = ([
       { src: "/assets/apps/quranhaven/mobile.webp", width: 414, height: 896, label: { en: "Mobile", ar: "الجوال" } },
       { src: "/assets/apps/quranhaven/surahs.webp", width: 1440, height: 1000, label: { en: "Mushaf reader", ar: "قارئ المصحف" } },
     ],
-    platformLinks: [{ label: "Google Play", href: "https://play.google.com/store/apps/details?id=org.quranflutter.quran_flutter" }],
+    platformLinks: [
+      { label: "Google Play", href: "https://play.google.com/store/apps/details?id=org.quranflutter.quran_flutter" },
+      { label: "App Store", href: "https://apps.apple.com/us/app/quran-haven/id6823268805" },
+    ],
   },
 ] satisfies Application[]).sort((a, b) => a.order - b.order);

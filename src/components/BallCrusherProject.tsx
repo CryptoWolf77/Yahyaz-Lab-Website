@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import wordmark from "../assets/ball-crusher-wordmark.png";
 import type { Language } from "../data/appContent";
 
 const copy = {
@@ -28,7 +29,7 @@ export default function BallCrusherProject({ language }: { language: Language })
         </div>
         <img
           className="ball-crusher-project__logo"
-          src="/assets/ball-crusher/wordmark.png"
+          src={wordmark}
           alt=""
           width={1280}
           height={600}

@@ -36,6 +36,10 @@
 .gateway-app-art .gateway-app-art__overview { border: 0; border-radius: 0; aspect-ratio: 1386 / 1115; }
 .gateway-game-art { display: grid; grid-template-columns: minmax(0,1fr); gap: 14px; justify-items: center; width: 100%; }
 .gateway-game-art img { width: min(100%, 420px); height: auto; aspect-ratio: 16/9; object-fit: contain; border: 1px solid var(--line); border-radius: 8px; background: #090d15; box-shadow: var(--shadow); }
+.ball-crusher-project .gateway-category { color: var(--gold); }
+.ball-crusher-project__logo { display: block; justify-self: center; width: min(100%, 360px); height: auto; }
+.games .ball-crusher-project { margin-inline: 0; }
+.app-shell--rtl .ball-crusher-project .world-gateway__copy { text-align: right; }
 
 .app-shell .studio { display: block; }
 .studio__inner { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: 72px; align-items: center; }

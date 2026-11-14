@@ -15,6 +15,7 @@ import {
 import { Game, games, studio } from "./data/siteContent";
 import { applications, type Language, type PortfolioPage } from "./data/appContent";
 import AppShowcase from "./components/AppShowcase";
+import BallCrusherProject from "./components/BallCrusherProject";
 import PortfolioHeader from "./components/PortfolioHeader";
 import { useModalFocus } from "./components/useModalFocus";
 
@@ -70,7 +71,7 @@ const translations = {
       since: "Since 2021",
       intro: studio.intro,
       metrics: [
-        { value: "04", label: "projects, built with care" },
+        { value: "05", label: "projects, built with care" },
         { value: "02", label: "worlds to explore" },
         { value: "Solo", label: "independent developer" },
       ],
@@ -136,7 +137,7 @@ const translations = {
       intro:
         "YahyazLab مساحتي الشخصية لبناء تطبيقات مفيدة وألعاب ممتعة. أصمّم وأطوّر كل مشروع باهتمام بالتفاصيل، من الأدوات التي تسهّل يومك إلى العوالم التي تستمتع باستكشافها.",
       metrics: [
-        { value: "04", label: "مشاريع بُنيت بعناية" },
+        { value: "05", label: "مشاريع بُنيت بعناية" },
         { value: "02", label: "عالمان للاستكشاف" },
         { value: "Solo", label: "مطوّر مستقل" },
       ],
@@ -478,7 +479,7 @@ function App({ page = "home", initialLanguage }: { page?: PortfolioPage; initial
 
   useEffect(() => {
     const title = page === "home" ? "YahyazLab | Apps & Games by an Independent Developer" : page === "apps" ? "Apps I Build | YahyazLab" : "Games I Build | YahyazLab";
-    const description = page === "home" ? "I build useful applications and engaging games at YahyazLab. Explore ApexLoad, QuranHaven, White Ninja and Puzzle VS Zombie." : page === "apps" ? "Explore ApexLoad and QuranHaven: thoughtfully built applications for everyday use, independently developed at YahyazLab." : "Explore White Ninja and Puzzle VS Zombie: mobile game projects, screenshots, trailers and store links by YahyazLab.";
+    const description = page === "home" ? "I build useful applications and engaging games at YahyazLab. Explore ApexLoad, QuranHaven, White Ninja, Puzzle VS Zombie and Ball Crusher." : page === "apps" ? "Explore ApexLoad and QuranHaven: thoughtfully built applications for everyday use, independently developed at YahyazLab." : "Explore White Ninja, Puzzle VS Zombie and Ball Crusher, game projects by YahyazLab.";
     const canonical = `https://yahyazlab.com${page === "home" ? "/" : `/${page}`}`;
     document.title = title;
     const setMeta = (key: string, value: string, property = false) => {
@@ -538,10 +539,11 @@ function App({ page = "home", initialLanguage }: { page?: PortfolioPage; initial
               </a>
               <a className="world-gateway world-gateway--games" href="/games" data-site-link>
                 <div className="world-gateway__inner content-width">
-                <div className="world-gateway__copy"><span className="gateway-category"><span className="gateway-number">02</span><Gamepad2 size={22} /><span>{isArabic ? "تطوير الألعاب" : "Games development"}</span></span><h3 className="reading-text">{isArabic ? <>مساحة لمزيد<br className="gateway-heading-break" /> من اللعب.</> : <>A little more<br />adventure.</>}</h3><p className="reading-text">{isArabic ? "تحديات سريعة، وألغاز ذكية، وعوالم تستحق الاستكشاف." : "Quick reactions, clever puzzles, and worlds worth getting lost in."}</p><div className="gateway-projects" dir="ltr"><span>White Ninja</span><span className="gateway-divider">/</span><span>Puzzle VS Zombie</span></div><span className="gateway-link">{exploreGames}<ArrowRight size={23} /></span></div>
+                <div className="world-gateway__copy"><span className="gateway-category"><span className="gateway-number">02</span><Gamepad2 size={22} /><span>{isArabic ? "تطوير الألعاب" : "Games development"}</span></span><h3 className="reading-text">{isArabic ? <>مساحة لمزيد<br className="gateway-heading-break" /> من اللعب.</> : <>A little more<br />adventure.</>}</h3><p className="reading-text">{isArabic ? "تحديات سريعة، وألغاز ذكية، وعوالم تستحق الاستكشاف." : "Quick reactions, clever puzzles, and worlds worth getting lost in."}</p><div className="gateway-projects" dir="ltr"><span>White Ninja</span><span className="gateway-divider">/</span><span>Puzzle VS Zombie</span><span className="gateway-divider">/</span><span>Ball Crusher</span></div><span className="gateway-link">{exploreGames}<ArrowRight size={23} /></span></div>
                 <div className="gateway-game-art" aria-hidden="true" dir="ltr"><img src={games[0].featured} alt="" width="1280" height="720" loading="lazy" decoding="async" /><img src={games[1].screenshots[0]} alt="" width="1920" height="1080" loading="lazy" decoding="async" /></div>
                 </div>
               </a>
+              <BallCrusherProject language={language} />
           </section>
           <section id="studio" className="studio section-band">
             <div className="content-width studio__inner"><div className="studio__visual"><img src={studio.logoTransparent} alt="YahyazLab logo" width="600" height="380" loading="lazy" decoding="async" /><span className="studio__since">{copy.studio.since}</span></div><div className="studio__content"><p className="eyebrow"><FlaskConical size={16} />{copy.studio.eyebrow}</p><h2 className="reading-text">{copy.studio.title}</h2><p>{copy.studio.intro}</p><div className="studio-metrics">{copy.studio.metrics.map((metric) => <span key={metric.label}><strong>{metric.value}</strong>{metric.label}</span>)}</div></div></div>
@@ -561,6 +563,7 @@ function App({ page = "home", initialLanguage }: { page?: PortfolioPage; initial
           <div className="content-width">
           <div className="section-heading games-heading"><p className="eyebrow"><Gamepad2 size={16} />{copy.games.eyebrow}</p><h2>{copy.games.title}</h2></div>
           {localizedGames.map((game, index) => <GameShowcase key={game.id} game={game} reverse={index % 2 === 1} ui={copy.games} onOpen={() => setActiveGame(game)} />)}
+          <BallCrusherProject language={language} />
           </div>
         </section>
         <section id="showreel" className="showreel section-band"><div className="content-width">

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Privacy policy for Puzzle VS Zombie, explaining Google AdMob advertising, consent choices, in-app purchases, data processing, and contact information."
@@ -26,9 +26,261 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
     <link rel="preload" as="image" href="/assets/puzzle-vs-zombie/feature-graphics.webp" type="image/webp" />
     <title>Puzzle VS Zombie Privacy Policy | YahyazLab</title>
+    <meta name="theme-color" content="#03040b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/unbounded-latin-variable.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-variable.woff2" crossorigin />
+    <link rel="stylesheet" href="/src/site/style.css" />
+    <script type="module" src="/src/site/privacy-page.js"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <!-- Policy text carried over verbatim from the previous site (src/PuzzleVsZombiePrivacyPage.tsx in git history). -->
+  <body data-page="privacy" data-skip="Skip to privacy policy" style="--accent: #ff3f8c">
+    <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+    <main id="main" class="privacy" tabindex="-1">
+      <section class="p-hero" id="top" aria-labelledby="privacy-title">
+        <div class="grid p-hero-grid">
+          <div class="p-hero-copy">
+            <p class="telemetry p-eyebrow"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M8 1.5 2.5 3.6v4c0 3.2 2.3 5.6 5.5 6.9 3.2-1.3 5.5-3.7 5.5-6.9v-4z" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="m5.6 8 1.7 1.7 3.2-3.4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Privacy &amp; data</span></p>
+            <p class="p-product">Puzzle VS Zombie</p>
+            <h1 id="privacy-title" class="p-title">Puzzle VS Zombie Privacy Policy</h1>
+            <p class="p-intro">A clear account of how advertising, consent, purchases, and information processing work in Puzzle VS Zombie.</p>
+            <p class="p-updated mono"><span>Last updated</span><time datetime="2026-10-01">October 1, 2026</time></p>
+          </div>
+          <div class="p-hero-art" aria-hidden="true">
+            <span class="p-icon-frame p-icon-frame--landscape"><img src="/assets/puzzle-vs-zombie/feature-graphics.webp" alt="" width="320" height="156" /></span>
+            <span class="p-art-label mono">Official policy</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid p-facts" aria-label="Privacy at a glance">
+        <div class="p-fact"><svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m6.4 10.2 2.4 2.4 4.8-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>No location permission</strong>No precise, coarse, or background location access.</span></div>
+        <div class="p-fact"><svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m6.4 10.2 2.4 2.4 4.8-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Google advertising</strong>Ads are provided through Google AdMob.</span></div>
+        <div class="p-fact"><svg viewBox="0 0 20 20" width="19" height="19" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m6.4 10.2 2.4 2.4 4.8-5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span><strong>Consent controls</strong>UMP privacy choices appear where required.</span></div>
+      </section>
+
+      <div class="grid p-layout">
+        <aside class="p-toc" aria-label="Privacy policy contents">
+          <details class="p-toc-box" id="p-toc" open>
+            <summary class="p-toc-summary"><span class="mono">Contents</span><span class="p-toc-chev" aria-hidden="true"></span></summary>
+            <p class="p-toc-title mono">On this page</p>
+            <ol class="p-toc-list">
+              <li><a href="#introduction"><span class="toc-n">01</span><span class="toc-l">Introduction</span></a></li>
+              <li><a href="#direct-information"><span class="toc-n">02</span><span class="toc-l">Information collected directly</span></a></li>
+              <li><a href="#third-party-information"><span class="toc-n">03</span><span class="toc-l">Third-party processing</span></a></li>
+              <li><a href="#advertising"><span class="toc-n">04</span><span class="toc-l">Advertising</span></a></li>
+              <li><a href="#consent"><span class="toc-n">05</span><span class="toc-l">Consent and regional requirements</span></a></li>
+              <li><a href="#purchases"><span class="toc-n">06</span><span class="toc-l">In-app purchases</span></a></li>
+              <li><a href="#diagnostics"><span class="toc-n">07</span><span class="toc-l">Log and diagnostic data</span></a></li>
+              <li><a href="#identifiers"><span class="toc-n">08</span><span class="toc-l">Identifiers and similar technologies</span></a></li>
+              <li><a href="#location"><span class="toc-n">09</span><span class="toc-l">Location information</span></a></li>
+              <li><a href="#use"><span class="toc-n">10</span><span class="toc-l">How information is used</span></a></li>
+              <li><a href="#sharing"><span class="toc-n">11</span><span class="toc-l">Data sharing and service providers</span></a></li>
+              <li><a href="#retention"><span class="toc-n">12</span><span class="toc-l">Data retention</span></a></li>
+              <li><a href="#security"><span class="toc-n">13</span><span class="toc-l">Security</span></a></li>
+              <li><a href="#children"><span class="toc-n">14</span><span class="toc-l">Children's privacy</span></a></li>
+              <li><a href="#choices"><span class="toc-n">15</span><span class="toc-l">Your privacy choices</span></a></li>
+              <li><a href="#external-links"><span class="toc-n">16</span><span class="toc-l">External links</span></a></li>
+              <li><a href="#changes"><span class="toc-n">17</span><span class="toc-l">Changes to this policy</span></a></li>
+              <li><a href="#contact"><span class="toc-n">18</span><span class="toc-l">Contact</span></a></li>
+            </ol>
+          </details>
+        </aside>
+
+        <article class="p-article" aria-label="Puzzle VS Zombie Privacy Policy">
+            <section id="introduction" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 01</p>
+              <h2><span class="sec-num">01</span> Introduction</h2>
+              <p>
+                Puzzle VS Zombie (package name <strong>com.puzzlevszombie.horror.kill.games</strong>) is developed and published by YahyazLab. This Privacy Policy explains how information may be collected, used, processed, and shared when you use the game. Puzzle VS Zombie is supported through advertising and offers in-app purchases.
+              </p>
+            </section>
+
+            <section id="direct-information" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 02</p>
+              <h2><span class="sec-num">02</span> Information YahyazLab Collects Directly</h2>
+              <p>
+                Puzzle VS Zombie does not provide account registration, user profiles, or an in-game form for submitting personal information to YahyazLab. YahyazLab does not directly ask you to provide personal information while playing the game.
+              </p>
+              <p>
+                If you voluntarily email YahyazLab, we receive your email address, your message, and any information you choose to include. We use that information to respond to and manage your request.
+              </p>
+            </section>
+
+            <section id="third-party-information" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 03</p>
+              <h2><span class="sec-num">03</span> Information Third-Party Services May Process</h2>
+              <p>Google advertising, billing, consent, and related services may process the following information where applicable:</p>
+              <ul>
+                <li>Advertising identifiers and other device or app identifiers.</li>
+                <li>Basic device information, operating system, app version, and language.</li>
+                <li>App interactions, advertising interactions, and purchase-related events.</li>
+                <li>IP address, timestamps, and network or technical identifiers.</li>
+                <li>Crash, diagnostic, performance, and other technical information.</li>
+                <li>Coarse information inferred from IP address or network signals where applicable.</li>
+              </ul>
+              <p class="privacy-note">
+                Puzzle VS Zombie does not request Android precise, coarse, or background location permissions and does not collect device location.
+              </p>
+            </section>
+
+            <section id="advertising" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 04</p>
+              <h2><span class="sec-num">04</span> Advertising</h2>
+              <p>
+                Puzzle VS Zombie uses Google AdMob through the Google Mobile Ads SDK. Google may process device or other identifiers, including advertising identifiers where available, ad and app interactions, basic device information, diagnostics, and network or IP-derived coarse information. This processing supports ad delivery and measurement, frequency limiting, fraud prevention, security, and advertising reports. Personalized advertising depends on your consent choices, applicable law, and your Google or device settings.
+              </p>
+              <p>
+                Learn more through the <a class="privacy-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" aria-label="Google Privacy Policy (opens in a new tab)">Google Privacy Policy<svg class="ext-svg" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>, <a class="privacy-link" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" aria-label="Google&#x27;s information about partner sites and apps (opens in a new tab)">Google's information about partner sites and apps<svg class="ext-svg" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>, and <a class="privacy-link" href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener noreferrer" aria-label="AdMob privacy information (opens in a new tab)">AdMob privacy information<svg class="ext-svg" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>.
+              </p>
+            </section>
+
+            <section id="consent" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 05</p>
+              <h2><span class="sec-num">05</span> Consent and Regional Privacy Requirements</h2>
+              <p>
+                Puzzle VS Zombie uses Google's User Messaging Platform (UMP). Users in regions where consent or privacy choices are required may be shown a consent or privacy message. This message is not necessarily shown to every user worldwide.
+              </p>
+              <p>
+                Depending on the region and available options, you may be able to consent, decline, or manage specific privacy choices. Advertising behavior may depend on those choices. When Google requires it, the game makes Privacy Options available so you can reopen the UMP privacy choices.
+              </p>
+            </section>
+
+            <section id="purchases" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 06</p>
+              <h2><span class="sec-num">06</span> In-App Purchases</h2>
+              <p>
+                Puzzle VS Zombie uses Google Play Billing for in-app purchases. Google Play processes the transaction and associated purchase information under Google's terms and privacy practices. YahyazLab may receive purchase status, product, transaction, and entitlement information needed to complete or restore a purchase, but does not receive your full payment-card details.
+              </p>
+            </section>
+
+            <section id="diagnostics" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 07</p>
+              <h2><span class="sec-num">07</span> Log and Diagnostic Data</h2>
+              <p>
+                Third-party services used by Puzzle VS Zombie may automatically receive technical and diagnostic details, such as device type, operating system, app version, crash or performance information, timestamps, and technical identifiers. These details can help deliver services, diagnose problems, prevent abuse, and maintain reliability. YahyazLab does not claim to directly store logs generated independently by third-party SDKs.
+              </p>
+            </section>
+
+            <section id="identifiers" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 08</p>
+              <h2><span class="sec-num">08</span> Identifiers and Similar Technologies</h2>
+              <p>
+                Mobile advertising and service SDKs may use advertising IDs, app or device identifiers, local storage, and similar mobile technologies rather than traditional browser cookies. These technologies may support advertising delivery, measurement, consent choices, billing, security, and fraud prevention.
+              </p>
+            </section>
+
+            <section id="location" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 09</p>
+              <h2><span class="sec-num">09</span> Location Information</h2>
+              <p>
+                Puzzle VS Zombie does not request <strong>ACCESS_FINE_LOCATION</strong>, <strong>ACCESS_COARSE_LOCATION</strong>, or <strong>ACCESS_BACKGROUND_LOCATION</strong>, and the game does not collect GPS or device location. Google services may infer broad, coarse information from an IP address or network signal where applicable; this is not GPS access and does not require Android location permission from the game.
+              </p>
+            </section>
+
+            <section id="use" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 10</p>
+              <h2><span class="sec-num">10</span> How Information Is Used</h2>
+              <p>Information processed in connection with Puzzle VS Zombie may be used to:</p>
+              <ul>
+                <li>Operate, deliver, personalize where permitted, and measure advertising.</li>
+                <li>Honor consent choices and advertising preferences.</li>
+                <li>Process and restore in-app purchases.</li>
+                <li>Protect services, prevent fraud, and maintain security.</li>
+                <li>Diagnose technical problems and improve reliability.</li>
+                <li>Respond to support or privacy emails sent to YahyazLab.</li>
+                <li>Comply with applicable legal requirements.</li>
+              </ul>
+            </section>
+
+            <section id="sharing" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 11</p>
+              <h2><span class="sec-num">11</span> Data Sharing and Service Providers</h2>
+              <p>
+                YahyazLab does not sell personal information. Google, including Google AdMob, UMP, and Google Play Billing, may receive and process information as a service provider or independent controller under its applicable terms. Data may be processed as needed to operate, advertise, measure, bill, protect, and improve those services.
+              </p>
+              <p>
+                Information may also be disclosed when required by law, legal process, or a valid governmental request, or when reasonably necessary to protect rights, safety, and the integrity of the game or its users.
+              </p>
+            </section>
+
+            <section id="retention" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 12</p>
+              <h2><span class="sec-num">12</span> Data Retention</h2>
+              <p>
+                Retention by Google and other third-party providers is governed by their own policies, user settings, legal requirements, and operational needs. YahyazLab does not set or promise a specific retention period for information processed independently by Google.
+              </p>
+              <p>
+                Emails sent directly to YahyazLab are retained only for as long as reasonably necessary to answer and manage the request and meet legitimate legal or administrative needs.
+              </p>
+            </section>
+
+            <section id="security" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 13</p>
+              <h2><span class="sec-num">13</span> Security</h2>
+              <p>
+                YahyazLab and its service providers use reasonable measures intended to protect information. However, no method of electronic transmission or storage is completely secure, and absolute security cannot be guaranteed.
+              </p>
+            </section>
+
+            <section id="children" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 14</p>
+              <h2><span class="sec-num">14</span> Children's Privacy</h2>
+              <p>
+                Puzzle VS Zombie does not provide accounts or forms that ask children to submit personal information directly to YahyazLab. Google services may process limited information as described in this policy, subject to applicable law, settings, and consent requirements.
+              </p>
+              <p>
+                If you are a parent or guardian and believe a child sent personal information directly to YahyazLab, please contact us so we can review the request and delete the information where appropriate. This section does not make a statement about the game's child-directed or target-audience classification.
+              </p>
+            </section>
+
+            <section id="choices" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 15</p>
+              <h2><span class="sec-num">15</span> Your Privacy Choices</h2>
+              <p>Depending on your region, device, and available services, you may:</p>
+              <ul>
+                <li>Manage choices through the UMP consent message shown in the game.</li>
+                <li>Reopen Privacy Options from the game when Google requires and provides that option.</li>
+                <li>Manage Google advertising preferences through <a class="privacy-link" href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer" aria-label="My Ad Center (opens in a new tab)">My Ad Center<svg class="ext-svg" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>.</li>
+                <li>Reset, delete, or manage advertising identifiers through Android settings where supported.</li>
+                <li>Review and control app permissions through Android device settings.</li>
+                <li>Contact YahyazLab with privacy questions or requests.</li>
+              </ul>
+            </section>
+
+            <section id="external-links" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 16</p>
+              <h2><span class="sec-num">16</span> External Links</h2>
+              <p>
+                Puzzle VS Zombie may link to app stores or other third-party services. Their content and privacy practices are governed by their own terms and privacy policies, which YahyazLab does not control.
+              </p>
+            </section>
+
+            <section id="changes" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 17</p>
+              <h2><span class="sec-num">17</span> Changes to This Policy</h2>
+              <p>
+                This Privacy Policy may be updated to reflect changes to Puzzle VS Zombie, its service providers, or applicable requirements. The latest version will be published on this webpage, and the "Last updated" date will be revised when changes are made.
+              </p>
+            </section>
+
+            <section id="contact" class="psec">
+              <p class="sec-code mono" aria-hidden="true">§ 18</p>
+              <h2><span class="sec-num">18</span> Contact</h2>
+              <p>For privacy questions or requests concerning Puzzle VS Zombie, contact:</p>
+              <address class="privacy-contact">
+                <strong>YahyazLab</strong>
+                <a href="mailto:admin@yahyazlab.com">
+                  <svg class="mail-svg" viewBox="0 0 20 16" width="18" height="15" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m2.5 3 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+                  admin@yahyazlab.com
+                </a>
+              </address>
+            </section>
+          </article>
+      </div>
+
+      <p class="p-end mono"><span>Puzzle VS Zombie · Privacy Policy</span><a class="p-back" href="/">Back to portfolio</a></p>
+    </main>
   </body>
 </html>

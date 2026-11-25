@@ -2,20 +2,29 @@
 
 ## Destinations
 
-- `/`: personal introduction, Apps/Games gateways, About (`/#studio`), Contact (`/#contact`).
-- `/apps`: data-driven ApexLoad and QuranHaven showcases and screenshot galleries.
-- `/games`: the existing game descriptions, galleries, trailers and four store destinations.
-- `/privacy/white-ninja` and `/privacy/puzzle-vs-zombie`: unchanged English policies.
+- `/`: the Nebula flight: hero, Two Worlds, Apps and Games stations, Reel, About (`/#about`), Contact (`/#contact`).
+- `/apps`: Apps intro planet, then the ApexLoad and QuranHaven stations (`/apps#apexload`, `/apps#quranhaven`).
+- `/games`: Games intro planet, the White Ninja, Puzzle VS Zombie and Ball Crusher stations, then the Reel (`/games#reel`).
+- `/privacy/white-ninja` and `/privacy/puzzle-vs-zombie`: unchanged English policies in a reading layout.
 
-The Vite build includes all five HTML entry points. Deploy the entire `dist/` directory using the existing hosting workflow. Directory routes, optional trailing slashes, `/index.html` and query parameters are normalized by the client. Legacy `/#games` and `/#showreel` lead to the corresponding Games sections. Internal navigation preserves real link semantics and updates history without a full document reload.
+The Vite build includes all five HTML entry points. Deploy the entire `dist/` directory using the existing hosting workflow. Links shared from the previous site keep working: `/#games` and `/#showreel` go to the Games page (`#showreel` lands on `#reel`), `/#studio` lands on `/#about`, and `/games#games` / `/games#showreel` land on the stations and the reel.
+
+## Code Layout
+
+The site is plain HTML entries plus vanilla ES modules in `src/site/` (bundled by Vite, Three.js for the scene):
+
+- `content.js`: every verified text, link and media record (EN/AR). Edit products here.
+- `core.js` (routes, language, UI copy), `chrome.js` (header, menu, footer, timeline), `ui.js` (dialogs, lightbox, trailers, reel, reveals), `stations.js` (product stations).
+- `flight.js`, `scene.js`, `shaders.js`, `targets.js`: the scroll-driven WebGL particle scene. `sky.js`: the static starfield (no-WebGL fallback and privacy pages).
+- Entries: `home.js` (`/`), `product-page.js` (`/apps`, `/games`, chosen by `<body data-page>`), `privacy-page.js` (both policies).
+- `style.css`: the whole design system. `public/boot.js` adds the `js` class before first paint (external, so the CSP needs no inline script).
 
 ## Adding An App
 
 1. Place optimized local WebP icons and screenshots under `public/assets/apps/<slug>/`. Keep authentic UI and original aspect ratios.
-2. Add an `Application` record to `src/data/appContent.ts`. Include both English and Arabic copy, the verified website, icon, ordered screenshots with exact dimensions and descriptive labels, three verified features, accent (`cyan` or `green`) and display order.
-3. The reusable `AppShowcase` renders the identity, external visit action and accessible full-size gallery. A portrait screenshot uses a phone-sized presentation; landscape screenshots use a browser presentation. ApexLoad uses the approved overview artwork with chamfered corners and no redundant single-image navigation. QuranHaven retains its multi-image selector.
-4. Only add verified or explicitly user-approved platform destinations. The component renders entries in `platformLinks`. ApexLoad's Android Google Play destination is verified on its official website; its iPhone release is still coming soon. QuranHaven uses the Google Play and App Store destinations supplied by the user, centralized in `src/data/appContent.ts`.
-5. Update the home gateway names/media and any project count if the portfolio expands beyond the current four projects. Check both languages at phone, tablet and desktop sizes.
+2. Add a record to `apps` in `src/site/content.js` with English and Arabic copy, the verified website, icon, ordered screenshots with exact dimensions and descriptive labels, verified features and store links. Stations, the page index, the home manifest and the camera stops are generated from that list.
+3. Only add verified or explicitly user-approved platform destinations. ApexLoad's Android Google Play destination is verified on its official website; its iPhone release is still coming soon, so no iOS badge is shown. QuranHaven uses the Google Play and App Store destinations supplied by the user.
+4. Check both languages at phone, tablet and desktop sizes.
 
 ## Content Verification
 
@@ -23,21 +32,19 @@ Last verified: **2026-10-17**, against the actual applications. Product captures
 
 - ApexLoad: `https://apexload.org/` is the verified social media downloader and identifies YahyazLab as creator. The originally supplied `https://apexload.com/` timed out on repeated checks; no redirect was verified. The portfolio therefore links to `.org`. Download formats and quality depend on the supported source. Do not promise all platforms or guaranteed 4K. No iOS release badge is shown.
 - QuranHaven: `https://quranhaven.org/` is the verified application. Reading/listening, Tafsir/translations, browse/search and Khatmah/memorization plans are verified. `surahs.webp` is actually the Mushaf reading interface, not a Surah index; its gallery caption is **Mushaf reader**. Keep its Arabic content unedited and within the gallery, not as animated decoration. Its Google Play destination was explicitly provided by the user; the user also supplied its App Store destination on 2026-11-02.
-- Maintain game records, asset URLs, videos and store links in `src/data/siteContent.ts`. Keep existing destinations and authentic media intact when updating the general studio description.
+- Maintain game records, asset URLs, videos and store links in `src/site/content.js`. Keep existing destinations and authentic media intact when updating the general studio description.
 
 ## Language And Accessibility
 
-The latest direction restores the existing live website's stable LTR page frame in both languages. English uses `lang="en"`; Arabic uses `lang="ar"` with targeted RTL reading text, balanced Arabic headings and unmirrored logos, Latin names, controls and product screenshots. This replaces the rejected ivory design's mirrored composition. Use bidi isolation where Latin names meet Arabic prose; never split Arabic characters for animation. The language preference is stored locally when browser storage is available; privacy content stays English/LTR without overwriting that choice. Galleries close on Escape, cycle with arrow keys, trap Tab focus, lock background scrolling and restore focus on close. Mobile navigation exposes active state and expansion state and closes on Escape, outside activation, navigation or focus leaving the header.
+English uses `lang="en"` and LTR; Arabic uses `lang="ar"` with an RTL page (Alexandria for Arabic text). `?lang=ar|en` deep links work, and the choice is stored under the same `yahyaz-language` key as the previous site. Latin product names stay isolated with `dir="ltr"`/`<bdi>`; never split Arabic characters for animation. Privacy pages always stay English/LTR and never overwrite the stored choice. Dialogs (menu, lightbox, trailer, details) close on Escape, trap focus and restore it on close.
 
-Game detail dialogs keep screenshot navigation and the close control in a persistent toolbar outside the scrolling body. Fit complete gameplay frames with `object-fit: contain` and an explicit responsive height; intrinsic image dimensions must not create a fixed-height portrait crop. Home gateways likewise preserve complete interfaces and gameplay context. When adjusting hero spacing, retain a visible next-section content hint at 375x812, 390x844, 768x1024, 1440x900 and 1920x1080 in both languages without overlapping the scene.
+Do not use `background-clip: text` (gradient text) on an element whose children animate separately: Chrome paints squashed, overlapping copies during the reveal. The hero headline is a solid colour for that reason.
 
-## Scene Integration And Media
+## Scene And Media
 
-The visual reference is the actual deployed **https://yahyazlab.com/**, inspected in English and Arabic on desktop and mobile on 2026-10-17. Preserve its logo-led hero, near-black lab background, cyan/pink/gold accents, floating dark navigation, cyan-to-gold buttons, graphical Since 2021 badge and original game/media panels. Extend that same visual language to Apps, ApexLoad and QuranHaven. Do not reintroduce the rejected ivory surfaces, oversized Syne headlines, coral page palette or Y/Z sculpture.
+The scene is one persistent WebGL particle field that morphs between the logo, two planets, the station tunnel, the galaxy and the contact logo as you scroll. It honours reduced motion, falls back to the static starfield when WebGL is unavailable (preview with `?nowebgl`), and pauses when the tab is hidden. Game trailers load only after a play action (`white-ninja-promo.mp4` is 49.6 MB). QuranHaven screenshots are shown respectfully inside the gallery, never as animated decoration.
 
-The existing production typography comes from `src/styles.css`: Inter/system sans-serif for English, with Segoe UI/Noto Sans Arabic/Tahoma fallbacks for Arabic. Rejected-design font files may remain locally, but should not be imported or fetched by the restored website. Keep letter spacing natural and Arabic shaping intact.
-
-`HeroScene` supplies the original logo/game-media planes, grid and restrained particles. Reuse its optimized lifecycle and lazy-load the Three.js resources separately from the ordinary HTML logo, copy and controls. Preserve a useful fallback for loading, data saver or WebGL failure; pause continuous rendering offscreen and when the tab is hidden, and honor reduced motion. The rejected `WorldsHero`/`WorldsScene` composition should not be imported. Game videos load only after a play action and pause offscreen or when the tab becomes hidden.
+Fonts are self-hosted in `public/assets/fonts/` (Unbounded, Manrope, JetBrains Mono, Alexandria; OFL licences alongside) because the production CSP only allows `font-src 'self'`.
 
 ## Development And Checks
 

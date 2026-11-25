@@ -1,6 +1,6 @@
 # YahyazLab Production Security Headers
 
-This is a static Vite/React website. The app cannot set HTTP response headers by itself after it is built, so these headers should be added in the production host, reverse proxy, Coolify proxy configuration, or Nginx/Caddy layer.
+This is a static Vite website (vanilla ES modules and Three.js). The app cannot set HTTP response headers by itself after it is built, so these headers should be added in the production host, reverse proxy, Coolify proxy configuration, or Nginx/Caddy layer.
 
 ## Recommended Headers
 
@@ -15,7 +15,8 @@ add_header Cross-Origin-Opener-Policy "same-origin" always;
 
 ## Notes
 
-- The CSP is designed for a static React/Vite build using local scripts, local images, local videos, local fonts, Three.js/WebGL, and the existing `mailto:` contact link.
+- The CSP is designed for a static Vite build using local scripts, local images, local videos, local fonts, Three.js/WebGL, and the existing `mailto:` contact link.
 - `style-src 'unsafe-inline'` is included because browser/runtime style attributes and Vite-generated style handling can require inline style allowance. Remove it only after verifying the deployed site with a stricter CSP.
 - If analytics, external fonts, a CDN, or third-party embeds are added later, update `script-src`, `connect-src`, `font-src`, `img-src`, or `frame-src` intentionally instead of using broad wildcards.
+- The site has no inline scripts (`public/boot.js` is external) and self-hosts every font, so `script-src 'self'` and `font-src 'self'` are sufficient.
 - Test both English and Arabic pages after enabling headers in production.

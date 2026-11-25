@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="I build useful applications and engaging games at YahyazLab. Explore ApexLoad, QuranHaven, White Ninja, Puzzle VS Zombie and Ball Crusher."
@@ -26,9 +26,200 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
     <link rel="preload" as="image" href="/assets/brand/logo-transparent.webp" type="image/webp" />
     <title>YahyazLab | Apps &amp; Games by an Independent Developer</title>
+    <meta name="theme-color" content="#03040b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/unbounded-latin-variable.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-variable.woff2" crossorigin />
+    <link rel="stylesheet" href="/src/site/style.css" />
+    <script src="/boot.js"></script>
+    <script type="module" src="/src/site/home.js"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <canvas class="scene" id="scene" aria-hidden="true"></canvas>
+    <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+    <main id="main" tabindex="-1">
+      <!-- 00 · HERO -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="pin">
+          <div class="grid hero-grid">
+            <div class="hero-copy">
+              <p class="telemetry rv"><span class="beacon" aria-hidden="true"></span><span data-t="c.heroSignal">Signal 00 · The lab</span></p>
+              <h1 id="hero-title" class="display">
+                <span class="sr-only">YahyazLab — </span>
+                <span class="h1-line" data-t="studio.role" data-split>Independent Apps &amp; Games Developer</span>
+              </h1>
+              <p class="lede rv" data-t="studio.tagline">
+                I create useful apps and polished game experiences with thoughtful details and a distinct visual identity.
+              </p>
+              <div class="cta-row rv">
+                <a class="btn btn-primary" href="#apps"><span data-t="worlds.apps.cta">Explore Apps</span><span class="btn-arrow" aria-hidden="true"></span></a>
+                <a class="btn" href="#games"><span data-t="worlds.games.cta">Explore Games</span></a>
+                <a class="btn btn-ghost" href="#reel"><span class="play-glyph" aria-hidden="true"></span><span data-t="ui.watchReel">Watch Reel</span></a>
+              </div>
+            </div>
+            <div class="hero-mark">
+              <img
+                class="hero-logo"
+                id="hero-logo"
+                src="/assets/brand/logo-transparent.webp"
+                width="1228"
+                height="596"
+                alt="YahyazLab"
+                fetchpriority="high"
+              />
+              <p class="since rv">
+                <span class="since-label" data-t="ui.since">Since</span>
+                <span class="since-year">2021</span>
+              </p>
+            </div>
+          </div>
+          <div class="hero-foot rv">
+            <span class="cue" aria-hidden="true"><span></span></span>
+            <span class="mono" data-t="c.scrollCue">Scroll to begin the flight</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 00 · TWO WORLDS -->
+      <section class="worlds" id="worlds" aria-labelledby="worlds-title">
+        <div class="pin">
+          <div class="grid worlds-head">
+            <div class="worlds-head-copy">
+              <p class="telemetry rv"><span data-t="c.worldsKicker">Chapter 00 · Two worlds</span></p>
+              <h2 id="worlds-title" class="display-2" data-t="worlds.heading" data-split>Two worlds. One eye for detail.</h2>
+            </div>
+          </div>
+          <div class="worlds-pair">
+            <article class="world" data-world="apps" aria-labelledby="world-apps-title">
+              <div class="planet-anchor" id="planet-a" aria-hidden="true"><span class="orb orb-apps"></span></div>
+              <div class="world-copy">
+                <p class="world-num mono">01</p>
+                <h3 id="world-apps-title" data-t="worlds.apps.label">Apps development</h3>
+                <p class="world-title" data-t="worlds.apps.title">A little more useful.</p>
+                <p class="world-body" data-t="worlds.apps.body">Thoughtful applications for the things that matter in your everyday.</p>
+                <a class="link-arrow" href="/apps"><span data-t="worlds.apps.cta">Explore Apps</span><span class="arrow" aria-hidden="true"></span></a>
+              </div>
+            </article>
+            <article class="world" data-world="games" aria-labelledby="world-games-title">
+              <div class="planet-anchor" id="planet-b" aria-hidden="true"><span class="orb orb-games"></span></div>
+              <div class="world-copy">
+                <p class="world-num mono">02</p>
+                <h3 id="world-games-title" data-t="worlds.games.label">Games development</h3>
+                <p class="world-title" data-t="worlds.games.title">A little more adventure.</p>
+                <p class="world-body" data-t="worlds.games.body">Quick reactions, clever puzzles, and worlds worth getting lost in.</p>
+                <a class="link-arrow" href="/games"><span data-t="worlds.games.cta">Explore Games</span><span class="arrow" aria-hidden="true"></span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01 · APPS -->
+      <section class="chapter" id="apps" aria-labelledby="apps-title" style="--accent: #2ef4ff">
+        <header class="grid chapter-head">
+          <div class="chapter-copy">
+            <p class="chapter-num" aria-hidden="true">01</p>
+            <p class="telemetry rv"><span data-t="c.appsKicker">Chapter 01 · Apps</span></p>
+            <h2 id="apps-title" class="display-2" data-t="worlds.apps.title" data-split>A little more useful.</h2>
+            <p class="chapter-body rv" data-t="worlds.apps.body">Thoughtful applications for the things that matter in your everyday.</p>
+            <ol class="manifest rv" id="apps-manifest"></ol>
+            <a class="link-arrow chapter-link rv" href="/apps"><span data-t="worlds.apps.cta">Explore Apps</span><span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </header>
+        <div id="apps-stations"></div>
+      </section>
+
+      <!-- 02 · GAMES -->
+      <section class="chapter" id="games" aria-labelledby="games-title" style="--accent: #ff3f8c">
+        <header class="grid chapter-head">
+          <div class="chapter-copy">
+            <p class="chapter-num" aria-hidden="true">02</p>
+            <p class="telemetry rv"><span data-t="c.gamesKicker">Chapter 02 · Games</span></p>
+            <h2 id="games-title" class="display-2" data-t="worlds.games.title" data-split>A little more adventure.</h2>
+            <p class="chapter-body rv" data-t="worlds.games.body">Quick reactions, clever puzzles, and worlds worth getting lost in.</p>
+            <ol class="manifest rv" id="games-manifest"></ol>
+            <a class="link-arrow chapter-link rv" href="/games"><span data-t="worlds.games.cta">Explore Games</span><span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </header>
+        <div id="games-stations"></div>
+      </section>
+
+      <!-- 03 · REEL -->
+      <section class="reel" id="reel" aria-labelledby="reel-title">
+        <div class="grid reel-grid">
+          <div class="reel-copy">
+            <p class="telemetry rv"><span data-t="c.reelKicker">Transmission 03 · Reel</span></p>
+            <h2 id="reel-title" class="display-2" data-t="ui.reelTitle" data-split>YahyazLab portfolio reel</h2>
+            <p class="rv" data-t="c.reelBody">A short signal from the lab: the YahyazLab mark, in motion.</p>
+            <div class="reel-controls rv">
+              <button class="btn" type="button" id="reel-play" aria-pressed="false">
+                <span class="play-glyph" aria-hidden="true"></span><span class="reel-play-label" data-t="c.playReel">Play reel</span>
+              </button>
+              <button class="btn btn-ghost" type="button" id="reel-sound" aria-pressed="false">
+                <svg class="sound-glyph" viewBox="0 0 20 16" width="18" height="15" aria-hidden="true" focusable="false"><path class="sg-body" d="M2 5.5h3.2L9.5 2v12L5.2 10.5H2z" /><path class="sg-waves" d="M12.4 5.2a4 4 0 0 1 0 5.6M14.9 3a7.2 7.2 0 0 1 0 10" /><path class="sg-off" d="M12 4.5l6 7M18 4.5l-6 7" /></svg><span class="reel-sound-label" data-t="c.soundOn">Sound on</span>
+              </button>
+            </div>
+          </div>
+          <div class="reel-stage">
+            <span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span>
+            <span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+            <video
+              id="reel-video"
+              class="reel-video"
+              muted
+              playsinline
+              loop
+              preload="none"
+              poster="/assets/brand/logo-square.webp"
+              data-t-aria="ui.reelTitle"
+              aria-label="YahyazLab portfolio reel"
+            ></video>
+            <p class="reel-meta mono" dir="ltr" aria-hidden="true"><span>REC · 1920×1080</span><span>05.6 S · LOOP</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 · ABOUT -->
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="grid about-grid">
+          <div class="about-copy">
+            <p class="telemetry rv"><span data-t="c.aboutKicker">Log 04 · About</span></p>
+            <h2 id="about-title" class="display-2" data-t="studio.aboutTitle" data-split>One maker. Two worlds.</h2>
+            <p class="lede rv" data-t="studio.intro">
+              YahyazLab is my personal space for building useful applications and engaging games.
+            </p>
+            <dl class="metrics rv" id="metrics"></dl>
+          </div>
+          <div class="since-mark rv" aria-hidden="true">
+            <span class="since-mark-label" data-t="ui.since">Since</span>
+            <span class="since-mark-year">2021</span>
+            <span class="since-mark-orbit"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · CONTACT -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="grid contact-grid">
+          <div class="contact-copy">
+            <p class="telemetry rv"><span class="beacon" aria-hidden="true"></span><span data-t="c.contactKicker">Channel 05 · Open channel</span></p>
+            <h2 id="contact-title" class="display-2" data-t="studio.contact.title" data-split>Interested in my work?</h2>
+            <p class="rv" data-t="studio.contact.body">
+              For questions about YahyazLab projects, portfolio work, or future updates, you can contact me here.
+            </p>
+            <a class="mail rv" href="mailto:admin@yahyazlab.com">
+              <span class="mail-kicker mono" data-t="c.writeTo">Write to</span>
+              <span class="mail-addr" dir="ltr">admin@yahyazlab.com</span>
+              <span class="mail-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" width="18" height="18" focusable="false"><path d="M4.5 11.5 11.5 4.5M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></span>
+            </a>
+          </div>
+          <div class="contact-mark">
+            <img id="contact-logo" class="contact-logo" src="/assets/brand/logo-transparent.webp" width="1228" height="596" alt="" loading="lazy" />
+          </div>
+        </div>
+      </section>
+    </main>
+
   </body>
 </html>
